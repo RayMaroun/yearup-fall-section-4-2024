@@ -1,0 +1,4 @@
+2024-04-23 22:30:36 launch
+2024-04-23 22:30:51 search : How to make a potato
+2024-04-23 22:30:57 search : How to make french fries
+2024-04-23 22:31:10 exit
