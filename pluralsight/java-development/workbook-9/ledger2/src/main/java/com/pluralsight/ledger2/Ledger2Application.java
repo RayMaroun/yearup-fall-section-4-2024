@@ -71,19 +71,18 @@ public class Ledger2Application {
 
     private static void addTransaction(Scanner scanner, TransactionService transactionService) {
         // This method adds a new transaction based on user input.
-        System.out.print("Enter transaction ID: ");
-        int transactionId = scanner.nextInt();
-        scanner.nextLine(); // Consumes the newline character after the integer input.
         System.out.print("Enter transaction amount: ");
         double amount = scanner.nextDouble();
         scanner.nextLine(); // Consumes the newline character.
         System.out.print("Enter vendor name: ");
         String vendor = scanner.nextLine();
 
-        Transaction transaction = new Transaction(transactionId, amount, vendor);
-        transactionService.addTransaction(transaction); // Adds the transaction to the service.
+        Transaction transaction = new Transaction(amount, vendor);
+        Transaction newTransaction = transactionService.addTransaction(transaction); // Adds the transaction to the service.
 
         System.out.println("Transaction added successfully.\n");
+        System.out.println(newTransaction);
+        System.out.println();
     }
 
     private static void updateTransaction(Scanner scanner, TransactionService transactionService) {
@@ -105,7 +104,7 @@ public class Ledger2Application {
         String vendor = scanner.nextLine();
 
         Transaction updatedTransaction = new Transaction(transactionId, amount, vendor);
-        transactionService.updateTransaction(updatedTransaction); // Updates the transaction.
+        transactionService.updateTransaction(transactionId, updatedTransaction); // Updates the transaction.
 
         System.out.println("Transaction updated successfully.\n");
     }
@@ -122,7 +121,7 @@ public class Ledger2Application {
             return;
         }
 
-        transactionService.deleteTransaction(existingTransaction); // Deletes the transaction.
+        transactionService.deleteTransaction(transactionId); // Deletes the transaction.
 
         System.out.println("Transaction deleted successfully.\n");
     }

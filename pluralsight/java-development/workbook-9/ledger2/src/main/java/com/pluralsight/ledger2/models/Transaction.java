@@ -5,6 +5,11 @@ public class Transaction {
     private double amount;
     private String vendor;
 
+    public Transaction(double amount, String vendor) {
+        this.amount = amount;
+        this.vendor = vendor;
+    }
+
     public Transaction(int transactionId, double amount, String vendor) {
         this.transactionId = transactionId;
         this.amount = amount;

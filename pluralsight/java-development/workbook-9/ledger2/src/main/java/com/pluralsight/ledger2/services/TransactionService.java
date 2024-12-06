@@ -11,7 +11,8 @@ import java.util.List;
  * TransactionService provides a layer of abstraction between the controller and the data access object (DAO).
  * It contains the business logic to interact with transactions and uses the ITransactionDAO for database operations.
  */
-@Component // Indicates that this class is a Spring component. It will be automatically detected and instantiated by Spring.
+@Component
+// Indicates that this class is a Spring component. It will be automatically detected and instantiated by Spring.
 public class TransactionService {
     private ITransactionDAO transactionDAO; // Interface to data access object for transactions.
 
@@ -30,9 +31,10 @@ public class TransactionService {
      * Adds a new transaction.
      *
      * @param transaction the transaction to add.
+     * @return the new transaction
      */
-    public void addTransaction(Transaction transaction) {
-        transactionDAO.add(transaction);
+    public Transaction addTransaction(Transaction transaction) {
+        return transactionDAO.add(transaction);
     }
 
     /**
@@ -59,16 +61,16 @@ public class TransactionService {
      *
      * @param transaction the transaction with updated details.
      */
-    public void updateTransaction(Transaction transaction) {
-        transactionDAO.update(transaction);
+    public void updateTransaction(int transactionId, Transaction transaction) {
+        transactionDAO.update(transactionId, transaction);
     }
 
     /**
      * Deletes a transaction.
      *
-     * @param transaction the transaction to be deleted.
+     * @param transactionId The ID of the transaction to delete.
      */
-    public void deleteTransaction(Transaction transaction) {
-        transactionDAO.delete(transaction);
+    public void deleteTransaction(int transactionId) {
+        transactionDAO.delete(transactionId);
     }
 }

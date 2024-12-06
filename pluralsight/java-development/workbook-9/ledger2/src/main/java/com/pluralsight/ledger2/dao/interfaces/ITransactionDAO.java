@@ -14,8 +14,9 @@ public interface ITransactionDAO {
      * Adds a new transaction to the data store.
      *
      * @param transaction The Transaction object to be added.
+     * @return the new transaction
      */
-    void add(Transaction transaction);
+    Transaction add(Transaction transaction);
 
     /**
      * Retrieves all transactions from the data store.
@@ -35,14 +36,15 @@ public interface ITransactionDAO {
     /**
      * Updates an existing transaction in the data store.
      *
+     * @param transactionId The ID of the transaction to update.
      * @param transaction The Transaction object with updated information.
      */
-    void update(Transaction transaction);
+    void update(int transactionId, Transaction transaction);
 
     /**
      * Deletes a transaction from the data store.
      *
-     * @param transaction The Transaction object to be deleted.
+     * @param transactionId The ID of the transaction to delete.
      */
-    void delete(Transaction transaction);
+    void delete(int transactionId);
 }

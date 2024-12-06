@@ -20,9 +20,18 @@ public class SimpleTransactionDAO implements ITransactionDAO {
     }
 
     @Override
-    public void add(Transaction transaction) {
+    public Transaction add(Transaction transaction) {
+        int maxId = 0;
+        for (Transaction t : transactions) {
+            if (t.getTransactionId() > maxId) {
+                maxId = t.getTransactionId();
+            }
+        }
+        transaction.setTransactionId(maxId + 1); // Increment max ID by 1
         transactions.add(transaction);
+        return transaction;
     }
+
 
     @Override
     public List<Transaction> getAllTransactions() {
@@ -40,16 +49,16 @@ public class SimpleTransactionDAO implements ITransactionDAO {
     }
 
     @Override
-    public void update(Transaction transaction) {
-        int index = getTransactionIndex(transaction.getTransactionId());
+    public void update(int transactionId, Transaction transaction) {
+        int index = getTransactionIndex(transactionId);
         if (index != -1) {
             transactions.set(index, transaction);
         }
     }
 
     @Override
-    public void delete(Transaction transaction) {
-        int index = getTransactionIndex(transaction.getTransactionId());
+    public void delete(int transactionId) {
+        int index = getTransactionIndex(transactionId);
         if (index != -1) {
             transactions.remove(index);
         }
