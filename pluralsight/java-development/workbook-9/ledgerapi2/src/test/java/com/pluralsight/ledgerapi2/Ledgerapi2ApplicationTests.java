@@ -1,0 +1,13 @@
+package com.pluralsight.ledgerapi2;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class Ledgerapi2ApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
